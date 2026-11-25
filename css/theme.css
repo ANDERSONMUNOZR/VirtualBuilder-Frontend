@@ -1,0 +1,67 @@
+/* Identidad visual de VirtualBuilder: tema oscuro tecnológico con detalles de luz neón.
+   Todos los colores se definen aquí como variables para usarlos en cualquier página. */
+
+:root {
+  --vb-bg: #0b0d17;
+  --vb-bg-2: #11142a;
+  --vb-panel: rgba(18, 22, 44, 0.78);
+  --vb-panel-solid: #12162c;
+  --vb-border: rgba(126, 142, 255, 0.18);
+  --vb-text: #e6e9ff;
+  --vb-muted: #8b93c7;
+  --vb-accent: #3ee6d0;      /* cian: acción principal */
+  --vb-accent-rgb: 62, 230, 208;
+  --vb-coral: #ff6b6b;       /* coral: mano izquierda / peligro */
+  --vb-violet: #9b7bff;      /* violeta: detalles */
+  --vb-radius: 14px;
+  --vb-glow: 0 0 18px rgba(var(--vb-accent-rgb), 0.35);
+  --vb-font: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --vb-font-display: 'Orbitron', 'Inter', sans-serif;
+}
+
+body {
+  background:
+    radial-gradient(circle at 20% 0%, rgba(155, 123, 255, 0.10), transparent 40%),
+    radial-gradient(circle at 90% 100%, rgba(var(--vb-accent-rgb), 0.08), transparent 45%),
+    var(--vb-bg);
+  color: var(--vb-text);
+  font-family: var(--vb-font);
+}
+
+.vb-muted { color: var(--vb-muted) !important; }
+.vb-accent { color: var(--vb-accent); }
+
+.vb-navbar {
+  background: rgba(11, 13, 23, 0.85);
+  border-bottom: 1px solid var(--vb-border);
+  backdrop-filter: blur(8px);
+}
+
+.vb-brand {
+  font-family: var(--vb-font-display);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: var(--vb-text);
+}
+.vb-brand span,
+.vb-brand i {
+  color: var(--vb-accent);
+  text-shadow: var(--vb-glow);
+}
+
+.vb-navbar .nav-link.active {
+  color: var(--vb-accent);
+}
+
+kbd {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--vb-border);
+  color: var(--vb-text);
+  font-size: 0.75em;
+  padding: 0.1em 0.4em;
+}
+
+:focus-visible {
+  outline: 2px solid var(--vb-accent);
+  outline-offset: 2px;
+}

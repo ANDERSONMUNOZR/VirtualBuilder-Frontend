@@ -1,0 +1,16 @@
+# Secretos y configuración local
+.env
+*.local
+
+# Dependencias y compilados (DLC de Minecraft)
+node_modules/
+dlc-minecraft/**/build/
+dlc-minecraft/**/target/
+dlc-minecraft/**/.gradle/
+dlc-minecraft/server/
+
+# Sistema y editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
