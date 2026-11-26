@@ -1,67 +1,130 @@
-/* Identidad visual de VirtualBuilder: tema oscuro tecnológico con detalles de luz neón.
-   Todos los colores se definen aquí como variables para usarlos en cualquier página. */
+/* Identidad visual de VirtualBuilder — estilo cinematográfico minimalista.
+   Negro profundo, tipografía blanca protagonista, líneas finas y un solo acento (blanco).
+   Todos los colores y fuentes se definen aquí como variables para usarlos en cualquier página. */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --vb-bg: #0b0d17;
-  --vb-bg-2: #11142a;
-  --vb-panel: rgba(18, 22, 44, 0.78);
-  --vb-panel-solid: #12162c;
-  --vb-border: rgba(126, 142, 255, 0.18);
-  --vb-text: #e6e9ff;
-  --vb-muted: #8b93c7;
-  --vb-accent: #3ee6d0;      /* cian: acción principal */
-  --vb-accent-rgb: 62, 230, 208;
-  --vb-coral: #ff6b6b;       /* coral: mano izquierda / peligro */
-  --vb-violet: #9b7bff;      /* violeta: detalles */
-  --vb-radius: 14px;
-  --vb-glow: 0 0 18px rgba(var(--vb-accent-rgb), 0.35);
+  --vb-bg: #050505;
+  --vb-bg-2: #0b0b0c;
+  --vb-panel: rgba(14, 14, 15, 0.82);
+  --vb-panel-solid: #0e0e0f;
+  --vb-border: rgba(255, 255, 255, 0.09);
+  --vb-border-strong: rgba(255, 255, 255, 0.22);
+  --vb-text: #f2f1ec;
+  --vb-muted: #8b8a85;
+  --vb-accent: #f2f1ec;           /* el acento es el blanco: la luz sobre el negro */
+  --vb-accent-rgb: 242, 241, 236;
+  --vb-coral: #ff5a52;            /* solo para acciones peligrosas (borrar) */
+  --vb-violet: #8b8a85;
+  --vb-radius: 10px;
+  --vb-glow: 0 0 0 1px rgba(255, 255, 255, 0.18);
   --vb-font: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --vb-font-display: 'Orbitron', 'Inter', sans-serif;
+  --vb-font-display: 'Space Grotesk', 'Inter', sans-serif;
+  --vb-font-mono: 'JetBrains Mono', ui-monospace, Consolas, monospace;
+}
+
+/* Bootstrap 5.3 lee estas variables: así sus componentes usan nuestros colores y fuentes */
+[data-bs-theme="dark"] {
+  --bs-body-bg: var(--vb-bg);
+  --bs-body-color: var(--vb-text);
+  --bs-body-font-family: var(--vb-font);
+  --bs-border-color: var(--vb-border);
+  --bs-secondary-color: var(--vb-muted);
+  --bs-link-color-rgb: var(--vb-accent-rgb);
+  --bs-link-hover-color-rgb: 255, 255, 255;
 }
 
 body {
-  background:
-    radial-gradient(circle at 20% 0%, rgba(155, 123, 255, 0.10), transparent 40%),
-    radial-gradient(circle at 90% 100%, rgba(var(--vb-accent-rgb), 0.08), transparent 45%),
-    var(--vb-bg);
+  background: var(--vb-bg);
   color: var(--vb-text);
   font-family: var(--vb-font);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--vb-text);
+  color: var(--vb-bg);
 }
 
 .vb-muted { color: var(--vb-muted) !important; }
 .vb-accent { color: var(--vb-accent); }
 
+/* Etiqueta pequeña en mayúsculas espaciadas (estilo créditos de película) */
+.vb-label {
+  font-family: var(--vb-font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--vb-muted);
+}
+
+/* ---------- Barra de navegación ---------- */
 .vb-navbar {
-  background: rgba(11, 13, 23, 0.85);
+  background: rgba(5, 5, 5, 0.85);
   border-bottom: 1px solid var(--vb-border);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
 }
 
 .vb-brand {
   font-family: var(--vb-font-display);
-  font-weight: 800;
-  letter-spacing: 0.06em;
+  font-weight: 600;
+  letter-spacing: -0.01em;
   color: var(--vb-text);
 }
-.vb-brand span,
-.vb-brand i {
-  color: var(--vb-accent);
-  text-shadow: var(--vb-glow);
+.vb-brand span {
+  font-weight: 300;
+  color: var(--vb-muted);
+}
+.vb-brand i { color: var(--vb-text); }
+
+.vb-navbar .nav-link {
+  color: var(--vb-muted);
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+.vb-navbar .nav-link:hover,
+.vb-navbar .nav-link.active {
+  color: var(--vb-text);
 }
 
-.vb-navbar .nav-link.active {
-  color: var(--vb-accent);
+/* ---------- Botones ---------- */
+.vb-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.7rem;
+  border: 1px solid var(--vb-text);
+  border-radius: 999px;
+  background: var(--vb-text);
+  color: var(--vb-bg);
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.25s, color 0.25s, transform 0.25s;
+}
+.vb-btn:hover {
+  background: transparent;
+  color: var(--vb-text);
+}
+.vb-btn-ghost {
+  background: transparent;
+  color: var(--vb-text);
+  border-color: var(--vb-border-strong);
+}
+.vb-btn-ghost:hover {
+  border-color: var(--vb-text);
 }
 
 kbd {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.06);
   border: 1px solid var(--vb-border);
   color: var(--vb-text);
-  font-size: 0.75em;
+  font-family: var(--vb-font-mono);
+  font-size: 0.72em;
   padding: 0.1em 0.4em;
 }
 
 :focus-visible {
-  outline: 2px solid var(--vb-accent);
+  outline: 2px solid var(--vb-text);
   outline-offset: 2px;
 }
