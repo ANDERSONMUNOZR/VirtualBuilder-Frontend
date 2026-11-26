@@ -1,0 +1,144 @@
+/* Estilos de las páginas informativas de VirtualBuilder (Guía de gestos y, luego, Retos y Mis proyectos).
+   Adaptan los componentes al estilo cinematográfico definido en theme.css: negro, blanco y líneas finas.
+
+   Nota sobre especificidad: gestos.html tiene un bloque <style> propio DESPUÉS de este archivo.
+   Para que nuestras reglas ganen, las escribimos dentro de "main" (main .vb-card pesa más que .vb-card). */
+
+/* ---------- Títulos ---------- */
+main .vb-title {
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+}
+main .vb-title span {
+  color: var(--vb-muted);
+  font-weight: 300;
+  text-shadow: none;
+}
+
+/* Etiqueta "en desarrollo" con estilo de créditos de película */
+main .badge.text-bg-warning {
+  background: transparent !important;
+  color: var(--vb-muted) !important;
+  border: 1px solid var(--vb-border-strong);
+  border-radius: 999px;
+  font-family: var(--vb-font-mono);
+  font-weight: 400;
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+}
+
+/* ---------- Tarjetas de gestos: solo una línea superior, sin caja ---------- */
+main .vb-card {
+  background: transparent;
+  border: 0;
+  border-top: 1px solid var(--vb-border-strong);
+  border-radius: 0;
+  padding: 1.5rem 0.25rem 0.5rem !important;
+  transition: border-color 0.3s;
+}
+main .vb-card:hover {
+  transform: none;
+  border-top-color: var(--vb-text);
+}
+
+/* Los emojis van en escala de grises y recuperan su color al pasar el mouse */
+main .vb-gesture {
+  filter: grayscale(1) brightness(0.9);
+  transition: filter 0.4s, transform 0.4s;
+}
+main .vb-card:hover .vb-gesture {
+  filter: none;
+  transform: translateY(-4px) rotate(-6deg);
+}
+
+main .vb-card h3 {
+  font-family: var(--vb-font-display);
+  font-weight: 500;
+}
+main .vb-action {
+  color: var(--vb-text);
+  font-family: var(--vb-font-mono);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* ---------- Componentes de Bootstrap en monocromo ----------
+   Bootstrap 5.3 define sus colores con variables CSS (--bs-...): basta con cambiarlas. */
+.accordion {
+  --bs-accordion-bg: transparent;
+  --bs-accordion-border-color: var(--vb-border);
+  --bs-accordion-border-radius: 0;
+  --bs-accordion-inner-border-radius: 0;
+  --bs-accordion-active-bg: transparent;
+  --bs-accordion-active-color: var(--vb-text);
+  --bs-accordion-btn-focus-box-shadow: none;
+}
+.accordion-button {
+  font-family: var(--vb-font-display);
+  font-weight: 500;
+}
+
+.list-group {
+  --bs-list-group-bg: transparent;
+  --bs-list-group-border-color: var(--vb-border);
+  --bs-list-group-border-radius: 0;
+}
+/* Íconos de la lista en blanco (quitamos los colores de Bootstrap) */
+main .list-group i {
+  color: var(--vb-text) !important;
+  margin-right: 0.4rem;
+}
+
+.table {
+  --bs-table-bg: transparent;
+  --bs-table-border-color: var(--vb-border);
+}
+.table thead th {
+  font-family: var(--vb-font-mono);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--vb-muted);
+}
+
+/* Botón principal: píldora blanca como en la portada */
+main .btn-info {
+  --bs-btn-color: var(--vb-bg);
+  --bs-btn-bg: var(--vb-text);
+  --bs-btn-border-color: var(--vb-text);
+  --bs-btn-hover-color: var(--vb-text);
+  --bs-btn-hover-bg: transparent;
+  --bs-btn-hover-border-color: var(--vb-text);
+  --bs-btn-active-color: var(--vb-bg);
+  --bs-btn-active-bg: var(--vb-text);
+  border-radius: 999px;
+  padding: 0.8rem 1.8rem;
+  font-weight: 500;
+}
+
+/* ---------- Diseño responsive ---------- */
+@media (max-width: 575.98px) {
+  main .display-5 {
+    font-size: 2.3rem;
+  }
+  main .vb-gesture {
+    font-size: 2.1rem;
+  }
+}
+
+/* ---------- Accesibilidad: menos movimiento para quien lo prefiera ---------- */
+@media (prefers-reduced-motion: reduce) {
+  main .vb-card,
+  main .vb-gesture {
+    transition: none;
+  }
+  main .vb-card:hover .vb-gesture {
+    transform: none;
+  }
+}
